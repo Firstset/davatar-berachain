@@ -81,21 +81,21 @@ export default function Avatar({
 
     setEthersProvider(eth);
 
-    if (!getCachedUrl(address)) {
-      eth.lookupAddress(address).then(ensName => {
-        if (ensName) {
-          eth.getResolver(ensName).then(resolver => {
-            if (resolver) {
-              resolver.getText('avatar').then(avatar => {
-                if (avatar && avatar.length > 0) {
-                  setAvatarUri(avatar);
-                }
-              });
-            }
-          });
-        }
-      });
-    }
+    // if (!getCachedUrl(address)) {
+    //   eth.lookupAddress(address).then(ensName => {
+    //     if (ensName) {
+    //       eth.getResolver(ensName).then(resolver => {
+    //         if (resolver) {
+    //           resolver.getText('avatar').then(avatar => {
+    //             if (avatar && avatar.length > 0) {
+    //               setAvatarUri(avatar);
+    //             }
+    //           });
+    //         }
+    //       });
+    //     }
+    //   });
+    // }
   }, [address, provider, avatarEthersProvider]);
 
   return (

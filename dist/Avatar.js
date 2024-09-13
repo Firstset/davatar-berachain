@@ -30,7 +30,6 @@ const providers_1 = require("@ethersproject/providers");
 const react_1 = __importStar(require("react"));
 const AvatarProvider_1 = require("./AvatarProvider");
 const Image_1 = __importDefault(require("./Image"));
-const cache_1 = require("./cache");
 function Avatar({ size, address, provider, generatedAvatarType, defaultComponent, style, cacheTTL, }) {
     const [avatarUri, setAvatarUri] = (0, react_1.useState)(null);
     const [ethersProvider, setEthersProvider] = (0, react_1.useState)(null);
@@ -57,21 +56,21 @@ function Avatar({ size, address, provider, generatedAvatarType, defaultComponent
             }
         }
         setEthersProvider(eth);
-        if (!(0, cache_1.getCachedUrl)(address)) {
-            eth.lookupAddress(address).then(ensName => {
-                if (ensName) {
-                    eth.getResolver(ensName).then(resolver => {
-                        if (resolver) {
-                            resolver.getText('avatar').then(avatar => {
-                                if (avatar && avatar.length > 0) {
-                                    setAvatarUri(avatar);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-        }
+        // if (!getCachedUrl(address)) {
+        //   eth.lookupAddress(address).then(ensName => {
+        //     if (ensName) {
+        //       eth.getResolver(ensName).then(resolver => {
+        //         if (resolver) {
+        //           resolver.getText('avatar').then(avatar => {
+        //             if (avatar && avatar.length > 0) {
+        //               setAvatarUri(avatar);
+        //             }
+        //           });
+        //         }
+        //       });
+        //     }
+        //   });
+        // }
     }, [address, provider, avatarEthersProvider]);
     return (react_1.default.createElement(Image_1.default, { size: size, address: address, uri: avatarUri, provider: ethersProvider, generatedAvatarType: generatedAvatarType, defaultComponent: defaultComponent, style: style, cacheTTL: cacheTTL }));
 }
