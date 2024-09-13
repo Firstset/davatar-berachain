@@ -5,7 +5,7 @@
   "homepage": "https://github.com/metaphor-xyz/davatar-helpers",
   "repository": {
     "type": "git",
-    "url": "https://github.com/metaphor-xyz/davatar-helpers.git",
+    "url": "git@github.com:Firstset/davatar-berachain.git",
     "directory": "packages/react"
   },
   "main": "dist/index.js",
